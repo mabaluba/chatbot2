@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -18,19 +17,17 @@ namespace chatbot2
                 var question = questionAnswer[0]; // попробовать сделать все методами ООП
                 var answer = questionAnswer[1];
                 var letter = 0;
-                //var word = new string('_', answer.Length);
+                Console.WriteLine(question);
                 while (true)
                 {
-                    Console.WriteLine(question);
                     var userAnswer = Console.ReadLine().Trim().ToLower();
                     if(userAnswer != answer)
                     {
-                        Console.WriteLine("Не правильно... Дать подсказку? - да/нет:");
-                        var hint = Console.ReadLine().Trim().ToLower();
-                        if (hint != "да") continue;
                         if(letter<answer.Length-1)
                         {
+                            Console.WriteLine("Не правильно... Вот подсказка:");
                             GiveHint(answer, letter);
+                            Console.WriteLine(question);
                             letter++;
                         }
                         else
@@ -38,24 +35,6 @@ namespace chatbot2
                             Console.WriteLine($"Никто не отгадал!\nПравильный ответ - {answer.ToUpper()}\n");
                             break;
                         }
-                        #region else
-                        /*else
-                        {
-                            Console.WriteLine("Попробуешь ответить еще раз без подсказки? - да/нет:");
-                            var tryAgain = Console.ReadLine().Trim().ToLower();
-                            if (tryAgain != "да")
-                            {
-                                Console.WriteLine("Хочешь другой вопрос? - да/нет:");
-                                var anotherQuestion = Console.ReadLine().Trim().ToLower();
-                                if (anotherQuestion == "да") break;
-                                else
-                                {
-                                    Console.WriteLine("Пока, до новых встречь!");
-                                    Environment.Exit(0);
-                                }
-                            }
-                        }*/
-                        #endregion
                     }
                     else
                     {
@@ -73,14 +52,13 @@ namespace chatbot2
                     questionsCount= questionsAndAnswers.Count;
                 }
             }
-            /*Console.WriteLine("Вы прошли всю векторину! Поздравляем!");
-            Environment.Exit(0);*/
         }
         static void GiveHint(string answer, int i)
         {
             Console.WriteLine($"{i + 1}-ая буква из {answer.Length} - {answer[i]}");
             var rightAnswer = answer.Substring(0, i+1).PadRight(answer.Length, '-');
             Console.WriteLine(rightAnswer);
+            //Console.WriteLine(question);
         }
 
         /*public static string UserAnswer()
