@@ -18,7 +18,7 @@ namespace Awesome
             /*ServicePointManager.Expect100Continue = true;   
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;*/
 
-            botClient = new TelegramBotClient("1851062182:AAH1MWEH8abb9BIn8BCU1N5Q16ak_GKiXhY");
+            botClient = new TelegramBotClient("token");
 
             /*var me = botClient.GetMeAsync().Result;
             Console.WriteLine(
